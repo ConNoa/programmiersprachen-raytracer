@@ -5,6 +5,7 @@ add_dependencies(example glfw ${FRAMEWORK_NAME} ${COPY_BINARY})
 
 install(TARGETS example DESTINATION .)
 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/..)
 add_executable(raytracer raytracer.cpp)
 
 target_link_libraries(raytracer ${FRAMEWORK_NAME} ${LIBRARIES}
@@ -17,7 +18,7 @@ install(TARGETS raytracer DESTINATION .)
 
 # Build tests
 add_executable(tests
-  tests.cpp)
+  tests.cpp sphere.cpp box.cpp shape.cpp)
 target_link_libraries(tests
   ${GLFW_LIBRARIES}
   )
