@@ -1,36 +1,48 @@
 #include "box.hpp"
+#include <math.h>       /* fabs */
+	
 
-		Box::Shape():
-		Shape::Shape(),
-		minimum{}
-		maximum{}{}
+		Box::Box():
+ 	//	Shape{},		
+		minimum{glm::vec3{0.0}},
+		maximum{glm::vec3{10.0}}{}
 
 
-		Box::Shape():Shape::Shape()(glm::vec3 minimum_in, glm::vec3 maximum_in):
-		minimum{minimum_in}
-		maximum{maximum_in}{}
+		Box::Box(glm::vec3 minimum_in, glm::vec3 maximum_in):
+	//	color_{}
+	//	name_{}
+		minimum{minimum_in},
+		maximum{maximum_in}{};
 
 
 
 		//Getter:
-		glm::vec3 	get_minimum() const
+		glm::vec3 	const& Box::get_minimum() const
 		{
 			return minimum;
 		}
 
-		glm::vec3 	get_maximum() const
+		glm::vec3 	const& Box::get_maximum() const
 		{
 			return maximum;
 		}
 
 
-		float		area()	const override
+		float		Box::area()	const
 		{
-			return 0.1f;
+ 		   	float x_length = fabs(maximum.x - minimum.x);
+    		float y_lenght = fabs(maximum.y - minimum.y);
+    		float z_lenght = fabs(maximum.z - minimum.z);
+
+			return (2*(x_length*y_lenght + x_length*z_lenght + y_lenght*z_lenght));		
 		}
 
-		float		volume() const override
+		float		Box::volume() const 
 		{
-			return 0.1f;
+			float x_length = fabs(maximum.x - minimum.x);
+    		float y_lenght = fabs(maximum.y - minimum.y);
+    		float z_lenght = fabs(maximum.z - minimum.z);
+
+			return (x_length*y_lenght*z_lenght);
 		}
 

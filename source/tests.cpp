@@ -1,19 +1,25 @@
+
 #define CATCH_CONFIG_RUNNER
 #include <catch.hpp>
-#include "sphere.hpp"
-#include "box.hpp"
+#include "shape.cpp"
+#include "box.cpp"
+#include "sphere.cpp"
+#include <cmath>
 
 
 
-TEST_CASE("box area size test")
+
+TEST_CASE("box area volume test")
 		
 {
-		Box b1{};
-		Sphere s1{};
-		s1.area();
-		b1.area();
-	//	REQUIRE (tl.empty());
-		REQUIRE (0==0);
+		Box b1;
+		REQUIRE (600==b1.area());
+		Sphere s1;
+		REQUIRE (Approx(4*M_PI*25)==s1.area());
+		REQUIRE	(1000==b1.volume());
+		REQUIRE (Approx(4/3*M_PI*125)==s1.volume());
+
+
 }
 
 
