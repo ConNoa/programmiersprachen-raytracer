@@ -2,13 +2,15 @@
 
 
 
-/*
-	Shape::Shape():
-    color_{Color{0.0,0.0,0.0}},
-    name_{"Shape"}
-    {}
 
-    Shape::Shape(Color color_in, std::String name_in):
+	Shape::Shape():
+    color_{Color{0.0f,0.0f,0.0f}},
+    name_{"newShape"}{}
+
+    Shape::Shape(Color const& color_in, std::string name_in):
     color_{color_in},
     name_{name_in}{}
-*/
+
+
+
+
