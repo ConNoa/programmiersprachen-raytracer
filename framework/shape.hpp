@@ -13,6 +13,8 @@ class Shape
 public:
 
 	Shape();
+	Shape(Color const& color_);
+	Shape(std::string name_);
 	Shape(Color const& color_, std::string name_);
 
 
@@ -22,6 +24,9 @@ public:
 
 	virtual float area() const = 0;
 	virtual float volume() const = 0;
+
+	virtual std::ostream& print(std::ostream& os) const =0;
+	
 };
 
 

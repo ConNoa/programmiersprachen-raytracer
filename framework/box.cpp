@@ -3,14 +3,23 @@
 	
 
 		Box::Box():
- 	//	Shape{},		
+ 		Shape{},		
 		minimum{glm::vec3{0.0}},
 		maximum{glm::vec3{10.0}}{}
 
 
 		Box::Box(glm::vec3 minimum_in, glm::vec3 maximum_in):
-	//	color_{}
-	//	name_{}
+		Shape{},
+		minimum{minimum_in},
+		maximum{maximum_in}{};
+
+		Box::Box(glm::vec3 minimum_in, glm::vec3 maximum_in, std::string name_in):
+		Shape{name_in},
+		minimum{minimum_in},
+		maximum{maximum_in}{};
+
+		Box::Box(glm::vec3 minimum_in, glm::vec3 maximum_in, Color const& color_in, std::string name_in):
+		Shape{color_in, name_in},
 		minimum{minimum_in},
 		maximum{maximum_in}{};
 
@@ -46,3 +55,10 @@
 			return (x_length*y_lenght*z_lenght);
 		}
 
+		std::ostream& Box::print(std::ostream& os) const
+		{
+		  Shape::print(os) ;
+		  os << "min:    <" << minimum.x << "," << minimum.y<< "," << minimum.z << "> \n" 
+		     << "max:    <" << maximum.x << "," << maximum.y<< "," << maximum.z << "> \n" ;
+		  return os; 
+		}

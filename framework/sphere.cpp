@@ -2,11 +2,18 @@
 #include <cmath>
 
 		Sphere::Sphere():
+		Shape{},
 		midpoint{10.0,10.0,10.0},
 		radius{5.0}{}
 
 
 		Sphere::Sphere(glm::vec3 midpoint_in, float radius_in):
+		midpoint{midpoint_in},
+		radius{radius_in}
+		{}
+
+		Sphere::Sphere(glm::vec3 midpoint_in, float radius_in, Color const& color_in, std::string name_in):
+		Shape{color_in, name_in},
 		midpoint{midpoint_in},
 		radius{radius_in}
 		{}
@@ -34,6 +41,14 @@
 		{
 					return  (fabs(4/3*M_PI*radius*radius*radius));
 
+		}
+
+		std::ostream& Sphere::print(std::ostream& os) const
+		{
+			Shape::print(os) ;
+			os << "middle: <" << midpoint.x << "," << midpoint.y << "," << midpoint.z << "> \n" 
+			   << "radius: " << radius <<"\n" ;
+			return os; 
 		}
 
 
